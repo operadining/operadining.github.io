@@ -12360,6 +12360,35 @@ context. You should place this element as a child of `<body>` whenever possible.
 
 
 
+<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName('link')[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    Polymer({
+      is: 'google-analytics',
+      properties: {
+        code: {
+          type: String,
+          value: 'UA-XXXXX-Y'
+        },
+        displayfeatures: {
+          type: Boolean,
+          value: false
+        }
+      },
+      ready: function() {
+        ga('create', this.code, 'auto');
+
+        if (this.displayfeatures)
+          ga('require', 'displayfeatures');
+
+        ga('send', 'pageview');
+      }
+    });
+  </script>
+
 
 
 
@@ -18537,8 +18566,8 @@ module.exports = Array.isArray || function (arr) {
         width: 800px;
       } 
     </style>
-      <google-map latitude="-33.8244254" longitude="151.1951045" fit-to-markers="" zoom="15">
-        <google-map-marker latitude="-33.8244254" longitude="151.1951045" title="Opera Dining"></google-map-marker>
+      <google-map latitude="-33.8268518" longitude="151.1976657" fit-to-markers="" zoom="15">
+        <google-map-marker latitude="-33.8268518" longitude="151.1976657" title="Opera Dining"></google-map-marker>
       </google-map>
 
   </template>
