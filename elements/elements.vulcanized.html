@@ -18560,16 +18560,25 @@ module.exports = Array.isArray || function (arr) {
 <dom-module id="my-location" assetpath="my-location/">
   <template>
     <style>
-      :host {
-        display: block;
-        height: 500px;
-        width: 800px;
-      } 
+    :host {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    
+    #map {
+      position: absolute;
+      top: 2px;
+      bottom: 2px;
+      right: 2px;
+      left: 2px;
+    }
     </style>
+    <div id="map">
       <google-map latitude="-33.8268518" longitude="151.1976657" fit-to-markers="" zoom="15">
-        <google-map-marker latitude="-33.8268518" longitude="151.1976657" title="Opera Dining"></google-map-marker>
+        <google-map-marker latitude="-33.8268171" longitude="151.19967703" title="Welcome to Opera Dining"></google-map-marker>
       </google-map>
-
+    </div>
   </template>
   <script>
   (function() {
