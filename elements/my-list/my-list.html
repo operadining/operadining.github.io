@@ -8,31 +8,86 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item-body.html">
+<!-- <link rel="import" href="../../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/slide-from-left-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html"> -->
 <dom-module id="my-list">
   <template>
     <style>
     :host {
       display: block;
     }
-
-    paper-icon-item.paper-icon-item-0 {
-      display: flex;
-      height: 40px;
+    
+    :root {
+      --my-custom-color: green;
+      --paper-tab-ink: var(--my-custom-color);
+      /* custom CSS property */
+      --paper-tabs-selection-bar-color: var(--default-primary-color);
+      /* custom CSS mixin */
+      --paper-tabs: {
+        font-size: 22px;
+      }
     }
-
-
-
     </style>
-    <div class="list short" role="listbox">
-      <paper-icon-item role="option" tabindex="0" aria-disabled="false" class="x-scope paper-icon-item-0">
-        <div class="flex"><a href="http://operadining.com.au/contents/DinnerMenu.pdf">Dinner Menu (pdf)</a></div>
-      </paper-icon-item>
-        <paper-icon-item role="option" tabindex="0" aria-disabled="false" class="x-scope paper-icon-item-0">
-        <div class="flex"><a href="http://operadining.com.au/contents/LunchMenu.pdf">Lunch Menu (pdf)</a></div>
-      </paper-icon-item>
-    </div>
+    <iron-ajax auto url="../../src/lunchmenu2.json" handle-as="json" last-response="{{response}}"></iron-ajax>
+    <iron-ajax auto url="../../src/dinnermenu.json" handle-as="json" last-response="{{dinnerresponse}}"></iron-ajax>
+         
+    <paper-tabs selected="{{selected}}">
+      <paper-tab>Lunch Menu
+        <paper-ripple class="style-scope paper-tab">
+          <div id="background" class="style-scope paper-ripple" style="opacity: 0;"></div>
+          <div id="waves" class="style-scope paper-ripple"></div>
+        </paper-ripple>
+      </paper-tab>
+      <paper-tab>Dinner Menu</paper-tab>
+    </paper-tabs>
+    <iron-pages selected="{{selected}}">
+      <div>  
+        <template is="dom-repeat" items="{{response}}">
+          <paper-card heading="{{item.Category}}" aria-label="{{item.Category}}" elevation="2" class="x-scope paper-card-0">
+          </paper-card>
+          <template is="dom-repeat" items="{{item.items}}">
+            <div class="list" role="listbox">
+              <paper-icon-item role="option" tabindex="0" aria-disabled="false" class="x-scope paper-icon-item-0">
+                <paper-item-body two-line="" class="x-scope paper-item-body-0">
+                  <div>{{item.Item}}</div>
+                  <div secondary="">{{item.Description}}</div>
+                </paper-item-body>
+                <paper-item role="option" tabindex="0" aria-disabled="false" class="x-scope paper-item-0">{{item.Price}}
+                </paper-item>
+              </paper-icon-item>
+            </div>
+          </template>
+        </template>
+      </div>
+      <div>
+        <template is="dom-repeat" items="{{dinnerresponse}}">
+          <paper-card heading="{{item.Category}}" aria-label="{{item.Category}}" elevation="1" class="x-scope paper-card-0">
+          </paper-card>
+          <template is="dom-repeat" items="{{item.items}}">
+            <div class="list" role="listbox">
+              <paper-icon-item role="option" tabindex="0" aria-disabled="false" class="x-scope paper-icon-item-0">
+                <paper-item-body two-line="" class="x-scope paper-item-body-0">
+                  <div>{{item.Item}}</div>
+                  <div secondary="">{{item.Description}}</div>
+                </paper-item-body>
+                <paper-item role="option" tabindex="0" aria-disabled="false" class="x-scope paper-item-0">{{item.Price}}
+                </paper-item>
+              </paper-icon-item>
+            </div>
+          </template>
+        </template>
+      </div>
+    </iron-pages>
   </template>
   <script>
   (function() {
@@ -40,21 +95,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer({
       is: 'my-list',
+
       properties: {
-        items: {
-          type: Array,
-          notify: true,
+        selected: {
+          type: Number,
+          value: 0,
+          notify: true
         }
-      },
-      ready: function() {
-        this.items = [
-          'Responsive Web App boilerplate',
-          'Iron Elements and Paper Elements',
-          'End-to-end Build Tooling (including Vulcanize)',
-          'Unit testing with Web Component Tester',
-          'Routing with Page.js',
-          'Offline support with the Platinum Service Worker Elements'
-        ];
       }
     });
   })();
