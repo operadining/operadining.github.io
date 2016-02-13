@@ -1,42 +1,84 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
 <dom-module id="my-greeting">
-  <template>
-    <style include="shared-styles"></style>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2 class="page-title">{{greeting}}</h2>
-    <span class="paper-font-body2">Opening very soon!!!!</span>
-  </template>
-
-  <script>
-    (function() {
-      'use strict';
-      
-      Polymer({
-        is: 'my-greeting',
-
-        properties: {
-          greeting: {
-            type: String,
-            value: 'Welcome!',
-            notify: true
-          }
+    <template>
+        <style include="shared-styles"></style>
+        <style>
+        @import url(http://fonts.googleapis.com/css?family=Oswald);
+        :host {
+            display: block;
+            font-family: "Oswald", sans-serif;
+            margin: 0;
         }
-      });
-    })();
-  </script>
+        
+        h1 {
+            font-weight: normal;
+            text-transform: uppercase;
+            margin: 0;
+            color: Black;
+        }
+        
+        h2 {
+            font-size: 18px;
+            font-weight: normal;
+            margin: 0px 0px 50px 0px;
+            color: #A9A9A9;
+        }
+        
+        paper-card {
+            --paper-card-header-color: #fff;
+            width: 400px;
+        }
+        
+        div.card-content {
+            font-size: 18px;
+            font-weight: normal;
+            margin: 0px 0px 50px 0px;
+            color: Green;
+            text-align: center;
+        }
+        
+        .flex-equal-around-justified {
+            @apply(--layout-horizontal);
+            @apply(--layout-around-justified);
+        }
+        </style>
+        <h1>Italian Infused Modern Australian Cuisine.</h1>
+        <h2>Incredibly Delicious and Best Family Restaurant</h2>
+        <div class="container flex-equal-around-justified">
+            <div>
+                <paper-card image="../../images/interior5.jpg" class="amber" elevation="1">
+                    <div class="card-content">New cafe in Crows Nest</div>
+                </paper-card>
+            </div>
+            <div>
+                <paper-card image="../../images/interior1.jpg" class="amber" elevation="1">
+                    <div class="card-content">Delicious Food. To fit your lifestyle.</div>
+                </paper-card>
+            </div>
+            <div>
+                <paper-card image="../../images/interior2.jpg" class="amber" elevation="1">
+                    <div class="card-content">Share the Love.</div>
+                </paper-card>
+            </div>
+        </div>
+    </template>
+    <script>
+    (function() {
+        'use strict';
 
+        Polymer({
+            is: 'my-greeting',
+
+            properties: {
+                greeting: {
+                    type: String,
+                    value: 'An Italian Infused Modern Australian Cuisine!',
+                    notify: true
+                }
+            }
+        });
+    })();
+    </script>
 </dom-module>
