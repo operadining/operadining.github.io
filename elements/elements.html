@@ -18679,7 +18679,7 @@ The `aria-labelledby` attribute will be set to the header element, if one exists
         }
         
         h1 {
-            font-weight: normal;
+            font-weight: bold;
             text-transform: uppercase;
             margin: 0;
             color: Black;
@@ -18691,86 +18691,124 @@ The `aria-labelledby` attribute will be set to the header element, if one exists
             margin: 0px 0px 50px 0px;
             color: #A9A9A9;
         }
-        
-        paper-card {
-           
-           
-        }
-        
-        .white
-        {
-            width: 400px;
-            height: 400px;
-        }
-        div.card-content {
+        p {
             font-size: 18px;
-            font-weight: bolder;
-           
-            text-align: center;
-            color: White;
+            font-weight: normal;
+            margin: 0px 0px 50px 0px;
+            color: #A9A9A9;
         }
+        paper-card {}
         
-        .flex-center-justified {
-            @apply(--layout-horizontal);
-            @apply(--layout-center-justified);
+        .white {
+            width: 200px;
+            height: 200px;
         }
         
         #example-sizing-contain {
-            width: 350px;
-            height: 350px;
- 
+            width: 200px;
+            height: 200px;
+            border-radius: 30px;
         }
-
-        .cafe-header
-        {
-             @apply(--paper-font-headline); 
+        
+        .menudialog {
+            background-color: white;
+            text-align: center;
+            border-radius: 30px;
+        }
+        
+        #example-sizing-contain2 {
+            width: 400px;
+            height: 400px;
+            border-radius: 30px;
+        }
+        
+        .container {
+            flex-wrap: wrap;
+            display: inline-flex;
         }
         </style>
         <h1>Italian Infused Modern Australian Cuisine.</h1>
         <h2>Incredibly Delicious and Best Family Restaurant</h2>
-        <div class="container flex-center-justified">
-            
-                <div>
-                    <paper-button data-dialog="animated">
-                        <paper-card heading="" image="../../images/food/starters.jpe" class="white">
-                             <div class="card-content">Starters</div>
-                        </paper-card>
+        <div class="container">
+            <div>
+                <section onclick="clickHandler(event)">
+                    <paper-button data-dialog="garlicprawn" role="button">
+                        <iron-image id="example-sizing-contain" src="../images/food/1.png" preload="" sizing="cover"></iron-image>
                     </paper-button>
-                    <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
-                        <iron-image id="example-sizing-contain" src="../images/food/starters.jpe" preload="" sizing="cover"></iron-image>
+                    <paper-dialog id="garlicprawn" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" role="dialog" tabindex="-1" aria-modal="false" class="x-scope paper-dialog-0 menudialog" aria-labelledby="paper-dialog-header-289" aria-hidden="true">
+                        <iron-image id="example-sizing-contain2" src="../images/food/1.png" preload="" sizing="cover"></iron-image>
+                        <h1>Garlic Prawn</h1>
+                         <p>fillet of beef wrapped with bacon, cook to your liking served with oven dried tomato, sauteed spinach mash potato and red wine jus
+                        </p>
                     </paper-dialog>
-                </div>
-                <div>
-                    <paper-button data-dialog="animated">
-                        <paper-card heading="" image="../../images/food/m4.jpg" class="white">
-                         <div class="card-content">Desserts</div>
-                        </paper-card>
+                </section>
+            </div>
+            <div>
+            </div>
+            <div>
+                <section onclick="clickHandler(event)">
+                    <paper-button data-dialog="filletmignon" role="button">
+                        <iron-image id="example-sizing-contain" src="../images/food/2.png" preload="" sizing="cover"></iron-image>
                     </paper-button>
-                    <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
-                        <iron-image id="example-sizing-contain" src="../images/food/m4.jpg" preload="" sizing="cover"></iron-image>
+                    <paper-dialog id="filletmignon" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" role="dialog" tabindex="-1" aria-modal="false" class="x-scope paper-dialog-0 menudialog" aria-labelledby="paper-dialog-header-289" aria-hidden="true">
+                        <iron-image id="example-sizing-contain2" src="../images/food/2.png" preload="" sizing="cover"></iron-image>
+                        <h1>Fillet Mignon</h1>
+                        <p>fillet of beef wrapped with bacon, cook to your liking served with oven dried tomato, sauteed spinach mash potato and red wine jus
+                        </p>
                     </paper-dialog>
-                </div>
-                <div>
-                    <paper-button data-dialog="animated">
-                        <paper-card heading="" image="../../images/food/dessert.jpe" class="white">
-                         <div class="card-content">Desserts</div>
-                        </paper-card>
+                </section>
+            </div>
+            <div>
+                <section onclick="clickHandler(event)">
+                    <paper-button data-dialog="vealinvoltini" role="button">
+                        <iron-image id="example-sizing-contain" src="../images/food/3.png" preload="" sizing="cover"></iron-image>
                     </paper-button>
-                    <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
-                        <iron-image id="example-sizing-contain" src="../images/food/dessert.jpe" preload="" sizing="cover"></iron-image>
+                    <paper-dialog id="vealinvoltini" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" role="dialog" tabindex="-1" aria-modal="false" class="x-scope paper-dialog-0 menudialog" aria-labelledby="paper-dialog-header-289" aria-hidden="true">
+                        <iron-image id="example-sizing-contain2" src="../images/food/3.png" preload="" sizing="cover"></iron-image>
+                        <h1>Veal Involtini</h1>
+                        <p>Veal backstripe rolled with raisin, ricotta cheese, pinenut wrap in proseitto. served with mash oven roasted tomato sauce</p>
                     </paper-dialog>
-                </div>
-            
-        </div>
-    </template>
-    <script>
-    (function() {
-        'use strict';
-
-        Polymer({
-            is: 'my-greeting',
-
-            clickHandler: function(e) {
+                </section>
+            </div>
+            <div>
+                <section onclick="clickHandler(event)">
+                    <paper-button data-dialog="scampi" role="button">
+                        <iron-image id="example-sizing-contain" src="../images/food/4.png" preload="" sizing="cover"></iron-image>
+                    </paper-button>
+                    <paper-dialog id="scampi" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" role="dialog" tabindex="-1" aria-modal="false" class="x-scope paper-dialog-0 menudialog" aria-labelledby="paper-dialog-header-289" aria-hidden="true">
+                        <iron-image id="example-sizing-contain2" src="../images/food/4.png" preload="" sizing="cover"></iron-image>
+                        <h1>Grilled Scampi</h1>
+                        <p>Grilled with garlic, chilli, parsley butter served with endive, spanish onion, fennel and toasted almond salad</p>
+                    </paper-dialog>
+                </section>
+            </div>
+            <div>
+                <section onclick="clickHandler(event)">
+                    <paper-button data-dialog="lobster" role="button">
+                        <iron-image id="example-sizing-contain" src="../images/food/6.png" preload="" sizing="cover"></iron-image>
+                    </paper-button>
+                    <paper-dialog id="lobster" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" role="dialog" tabindex="-1" aria-modal="false" class="x-scope paper-dialog-0 menudialog" aria-labelledby="paper-dialog-header-289" aria-hidden="true">
+                        <iron-image id="example-sizing-contain2" src="../images/food/6.png" preload="" sizing="cover"></iron-image>
+                        <h1>Western Australia Lobster</h1>
+                        <p></p>
+                    </paper-dialog>
+                </section>
+            </div>
+            <div>
+                <section onclick="clickHandler(event)">
+                    <paper-button data-dialog="fritters" role="button">
+                        <iron-image id="example-sizing-contain" src="../images/food/7.png" preload="" sizing="cover"></iron-image>
+                    </paper-button>
+                    <paper-dialog id="fritters" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" role="dialog" tabindex="-1" aria-modal="false" class="x-scope paper-dialog-0 menudialog" aria-labelledby="paper-dialog-header-289" aria-hidden="true">
+                        <iron-image id="example-sizing-contain2" src="../images/food/7.png" preload="" sizing="cover"></iron-image>
+                        <h1>Pea &amp; Corn Fritters</h1>
+                        <p>Served with mixed salad, smoked salmon and tomato relish
+                        </p>
+                    </paper-dialog>
+                </section>
+            </div>
+            <script>
+            function clickHandler(e) {
                 var button = e.target;
                 while (!button.hasAttribute('data-dialog') && button !== document.body) {
                     button = button.parentElement;
@@ -18785,7 +18823,17 @@ The `aria-labelledby` attribute will be set to the header element, if one exists
                 if (dialog) {
                     dialog.open();
                 }
-            },
+            }
+            </script>
+        </div>
+    </template>
+    <script>
+    (function() {
+        'use strict';
+
+        Polymer({
+            is: 'my-greeting',
+
 
             properties: {
                 greeting: {
@@ -22339,22 +22387,19 @@ if (!window.Promise) {
             color: #A9A9A9;
         }
         
-        paper-card {
-           
-           
-        }
+        paper-card {}
         
-        .white
-        {
+        .white {
             width: 400px;
             height: 400px;
+            background-color: white;
         }
+        
         div.card-content {
             font-size: 18px;
             font-weight: bolder;
-           
             text-align: center;
-            color: White;
+            color: Red;
         }
         
         .flex-center-justified {
@@ -22365,49 +22410,41 @@ if (!window.Promise) {
         #example-sizing-contain {
             width: 350px;
             height: 350px;
- 
+        }
+        
+        .flex {
+            @apply(--layout-horizontal);
         }
 
-        .cafe-header
-        {
-             @apply(--paper-font-headline); 
+        .container {
+            flex-wrap: wrap;
+            display: inline-flex;
         }
+
         </style>
         <h1>Italian Infused Modern Australian Cuisine.</h1>
         <h2>Incredibly Delicious and Best Family Restaurant</h2>
-        <div class="container flex-center-justified">
-            
-                <div>
-                    <paper-button data-dialog="animated">
-                        <paper-card heading="" image="../../images/food/starters.jpe" class="white">
-                             <div class="card-content">Starters</div>
-                        </paper-card>
-                    </paper-button>
-                    <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
-                        <iron-image id="example-sizing-contain" src="../images/food/starters.jpe" preload="" sizing="cover"></iron-image>
-                    </paper-dialog>
-                </div>
-                <div>
-                    <paper-button data-dialog="animated">
-                        <paper-card heading="" image="../../images/food/m4.jpg" class="white">
-                         <div class="card-content">Desserts</div>
-                        </paper-card>
-                    </paper-button>
-                    <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
-                        <iron-image id="example-sizing-contain" src="../images/food/m4.jpg" preload="" sizing="cover"></iron-image>
-                    </paper-dialog>
-                </div>
-                <div>
-                    <paper-button data-dialog="animated">
-                        <paper-card heading="" image="../../images/food/dessert.jpe" class="white">
-                         <div class="card-content">Desserts</div>
-                        </paper-card>
-                    </paper-button>
-                    <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
-                        <iron-image id="example-sizing-contain" src="../images/food/dessert.jpe" preload="" sizing="cover"></iron-image>
-                    </paper-dialog>
-                </div>
-            
+        <div class="container">
+            <div>
+                <paper-button data-dialog="animated">
+                    <paper-card heading="" image="../../images/stationaries/lunch.png" class="white">
+                        <div class="card-content">11:30AM - 2:30PM
+                        <br><br>  <br><br>
+                          <p>Ask for </p>
+                          <p>Daily Chef's Special</p></div>
+                    </paper-card>
+                </paper-button>
+            </div>
+            <div>
+                <paper-button data-dialog="animated">
+                    <paper-card heading="" image="../../images/stationaries/dinner.png" class="white">
+                        <div class="card-content">5:00PM - 10:00PM
+                      <br><br>  <br><br>
+                          <p>Ask for </p>
+                          <p>Daily Chef's Special</p></div>
+                    </paper-card>
+                </paper-button>
+            </div>
         </div>
     </template>
     <script>
@@ -22480,13 +22517,23 @@ if (!window.Promise) {
             color: var(--paper-grey-500);
         }
         
-        .flex-center-justified {
-            @apply(--layout-horizontal);
-            @apply(--layout-center-justified);
+      .container {
+            flex-wrap: wrap;
+            display: inline-flex;
+
         }
+
+        .contact
+        {
+            width: 300px;
+            height: 300px;
+             margin-left: 20px;
+        }
+ 
         </style>
-        <div class="container flex-center-justified">
-            <paper-card image="../../images/stationaries/contactimage.png">
+        <div class="container">
+        <div>
+            <paper-card class="contact" image="../../images/stationaries/contactimage.png">
                 <div class="card-content">
                     <div class="cafe-header">344, Pacific Highway, Crows Next
                         <div class="cafe-location cafe-light">
@@ -22504,11 +22551,14 @@ if (!window.Promise) {
                 </div>
               
             </paper-card>
-            <paper-card>
-                 <div class="card-content">
+            </div>
+            <div>
+            <paper-card class="contact">
+                  
                    <my-location></my-location>
-                </div>
+         
             </paper-card>
+            </div>
         </div>
     </template>
     <script>
@@ -22571,46 +22621,58 @@ if (!window.Promise) {
             @apply(--layout-center-justified);
         }
         
-        #example-sizing-contain {
-            width: 350px;
-            height: 350px;
+        .animated {
+            width: 200px height: 350px;
             background: red;
         }
-        </style>
-        <div class="header"> 
         
-        <h1>Italian Infused Modern Australian Cuisine.</h1>
-        <h2>Incredibly Delicious and Best Family Restaurant</h2>
+        .container {
+            flex-wrap: wrap;
+            display: inline-flex;
+        }
+        </style>
+        <div class="header">
+            <h1>Italian Infused Modern Australian Cuisine.</h1>
+            <h2>Incredibly Delicious and Best Family Restaurant</h2>
         </div>
-        <div class="container flex-center-justified ">
+        <div class="container">
             <div>
                 <section>
                     <paper-button data-dialog="animated">
                         <paper-card image="../../images/interior5.jpg" class="amber" elevation="1">
                             <div class="card-content">New Restaurant in Crows Nest</div>
                         </paper-card>
-                    </paper-button> 
+                    </paper-button>
                 </section>
             </div>
+     
             <div>
                 <section>
                     <paper-button data-dialog="animated">
                         <paper-card image="../../images/interior1.jpg" class="amber" elevation="1">
                             <div class="card-content">Delicious Food. To fit your lifestyle.</div>
                         </paper-card>
-                    </paper-button> 
+                    </paper-button>
                 </section>
             </div>
             <div>
                 <section>
                     <paper-button data-dialog="animated">
                         <paper-card image="../../images/interior2.jpg" class="amber" elevation="1">
-                            <div class="card-content">Share the Love.</div>
+                            <div class="card-content">Experience the difference.</div>
                         </paper-card>
-                    </paper-button> 
+                    </paper-button>
                 </section>
             </div>
-
+                   <div>
+                <section>
+                    <paper-button data-dialog="animated">
+                        <paper-card image="../../images/gallery/1love.png" class="amber" elevation="1">
+                            <div class="card-content">Share the Love.</div>
+                        </paper-card>
+                    </paper-button>
+                </section>
+            </div>
         </div>
     </template>
     <script>
@@ -22620,7 +22682,7 @@ if (!window.Promise) {
         Polymer({
             is: 'my-gallery',
 
-            
+
             properties: {
                 gallery: {
                     type: String,
