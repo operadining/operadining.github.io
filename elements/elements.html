@@ -13533,7 +13533,6 @@ this.fire('dom-change');
         background: currentColor;
         opacity: var(--dark-divider-opacity);
         content: '';
-        pointer-events: none;
 
         @apply(--paper-menu-focused-item-after);
       }
@@ -18710,10 +18709,6 @@ The `aria-labelledby` attribute will be set to the header element, if one exists
             color: White;
         }
         
-        .flex-center-justified {
-            @apply(--layout-horizontal);
-            @apply(--layout-center-justified);
-        }
         
         #example-sizing-contain {
             width: 350px;
@@ -18725,10 +18720,16 @@ The `aria-labelledby` attribute will be set to the header element, if one exists
         {
              @apply(--paper-font-headline); 
         }
+
+        .container {
+            flex-wrap: wrap;
+            display: inline-flex;
+        }
+
         </style>
         <h1>Italian Infused Modern Australian Cuisine.</h1>
         <h2>Incredibly Delicious and Best Family Restaurant</h2>
-        <div class="container flex-center-justified">
+        <div class="container">
             
                 <div>
                     <paper-button data-dialog="animated">
@@ -22339,22 +22340,19 @@ if (!window.Promise) {
             color: #A9A9A9;
         }
         
-        paper-card {
-           
-           
-        }
+        paper-card {}
         
-        .white
-        {
+        .white {
             width: 400px;
             height: 400px;
+            background-color: white;
         }
+        
         div.card-content {
             font-size: 18px;
             font-weight: bolder;
-           
             text-align: center;
-            color: White;
+            color: Red;
         }
         
         .flex-center-justified {
@@ -22365,49 +22363,35 @@ if (!window.Promise) {
         #example-sizing-contain {
             width: 350px;
             height: 350px;
- 
+        }
+        
+        .flex {
+            @apply(--layout-horizontal);
         }
 
-        .cafe-header
-        {
-             @apply(--paper-font-headline); 
+        .container {
+            flex-wrap: wrap;
+            display: inline-flex;
         }
+
         </style>
         <h1>Italian Infused Modern Australian Cuisine.</h1>
         <h2>Incredibly Delicious and Best Family Restaurant</h2>
-        <div class="container flex-center-justified">
-            
-                <div>
-                    <paper-button data-dialog="animated">
-                        <paper-card heading="" image="../../images/food/starters.jpe" class="white">
-                             <div class="card-content">Starters</div>
-                        </paper-card>
-                    </paper-button>
-                    <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
-                        <iron-image id="example-sizing-contain" src="../images/food/starters.jpe" preload="" sizing="cover"></iron-image>
-                    </paper-dialog>
-                </div>
-                <div>
-                    <paper-button data-dialog="animated">
-                        <paper-card heading="" image="../../images/food/m4.jpg" class="white">
-                         <div class="card-content">Desserts</div>
-                        </paper-card>
-                    </paper-button>
-                    <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
-                        <iron-image id="example-sizing-contain" src="../images/food/m4.jpg" preload="" sizing="cover"></iron-image>
-                    </paper-dialog>
-                </div>
-                <div>
-                    <paper-button data-dialog="animated">
-                        <paper-card heading="" image="../../images/food/dessert.jpe" class="white">
-                         <div class="card-content">Desserts</div>
-                        </paper-card>
-                    </paper-button>
-                    <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
-                        <iron-image id="example-sizing-contain" src="../images/food/dessert.jpe" preload="" sizing="cover"></iron-image>
-                    </paper-dialog>
-                </div>
-            
+        <div class="container">
+            <div>
+                <paper-button data-dialog="animated">
+                    <paper-card heading="" image="../../images/stationaries/lunch.png" class="white">
+                        <div class="card-content">11:30AM - 2:30PM</div>
+                    </paper-card>
+                </paper-button>
+            </div>
+            <div>
+                <paper-button data-dialog="animated">
+                    <paper-card heading="" image="../../images/stationaries/dinner.png" class="white">
+                        <div class="card-content">5:00PM - 10:00PM</div>
+                    </paper-card>
+                </paper-button>
+            </div>
         </div>
     </template>
     <script>
@@ -22480,13 +22464,23 @@ if (!window.Promise) {
             color: var(--paper-grey-500);
         }
         
-        .flex-center-justified {
-            @apply(--layout-horizontal);
-            @apply(--layout-center-justified);
+      .container {
+            flex-wrap: wrap;
+            display: inline-flex;
+
         }
+
+        .contact
+        {
+            width: 300px;
+            height: 300px;
+             margin-left: 20px;
+        }
+ 
         </style>
-        <div class="container flex-center-justified">
-            <paper-card image="../../images/stationaries/contactimage.png">
+        <div class="container">
+        <div>
+            <paper-card class="contact" image="../../images/stationaries/contactimage.png">
                 <div class="card-content">
                     <div class="cafe-header">344, Pacific Highway, Crows Next
                         <div class="cafe-location cafe-light">
@@ -22504,11 +22498,14 @@ if (!window.Promise) {
                 </div>
               
             </paper-card>
-            <paper-card>
-                 <div class="card-content">
+            </div>
+            <div>
+            <paper-card class="contact">
+                  
                    <my-location></my-location>
-                </div>
+         
             </paper-card>
+            </div>
         </div>
     </template>
     <script>
@@ -22572,24 +22569,30 @@ if (!window.Promise) {
         }
         
         #example-sizing-contain {
-            width: 350px;
+            width: 200px
             height: 350px;
             background: red;
         }
-        </style>
-        <div class="header"> 
         
-        <h1>Italian Infused Modern Australian Cuisine.</h1>
-        <h2>Incredibly Delicious and Best Family Restaurant</h2>
+        .container {
+   
+            flex-wrap: wrap;
+            
+            display: inline-flex;
+        }
+        </style>
+        <div class="header">
+            <h1>Italian Infused Modern Australian Cuisine.</h1>
+            <h2>Incredibly Delicious and Best Family Restaurant</h2>
         </div>
-        <div class="container flex-center-justified ">
+        <div class="container">
             <div>
                 <section>
                     <paper-button data-dialog="animated">
                         <paper-card image="../../images/interior5.jpg" class="amber" elevation="1">
                             <div class="card-content">New Restaurant in Crows Nest</div>
                         </paper-card>
-                    </paper-button> 
+                    </paper-button>
                 </section>
             </div>
             <div>
@@ -22598,7 +22601,7 @@ if (!window.Promise) {
                         <paper-card image="../../images/interior1.jpg" class="amber" elevation="1">
                             <div class="card-content">Delicious Food. To fit your lifestyle.</div>
                         </paper-card>
-                    </paper-button> 
+                    </paper-button>
                 </section>
             </div>
             <div>
@@ -22607,10 +22610,9 @@ if (!window.Promise) {
                         <paper-card image="../../images/interior2.jpg" class="amber" elevation="1">
                             <div class="card-content">Share the Love.</div>
                         </paper-card>
-                    </paper-button> 
+                    </paper-button>
                 </section>
             </div>
-
         </div>
     </template>
     <script>
@@ -22620,7 +22622,7 @@ if (!window.Promise) {
         Polymer({
             is: 'my-gallery',
 
-            
+
             properties: {
                 gallery: {
                     type: String,
