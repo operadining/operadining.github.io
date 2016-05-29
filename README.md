@@ -1,2 +1,0 @@
-# operadining.github.io
-operadining

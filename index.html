@@ -1,1 +1,939 @@
-<!doctype html><html lang=""><head><meta charset="utf-8"><meta name="description" content=""><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Opera Dining"><title>Opera Dining</title><meta name="theme-color" content="#2E3AA1"><link rel="manifest" href="manifest.json"><meta name="msapplication-TileColor" content="#3372DF"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="OperaDining"><link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="Opera Dining"><link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png"><meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png"><link rel="stylesheet" href="styles/main.css"><script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script><link rel="import" href="elements/elements.html"><style is="custom-style" include="shared-styles"></style></head><body unresolved="" class="fullbleed layout vertical"><span id="browser-sync-binding"></span><template is="dom-bind" id="app"><paper-drawer-panel id="paperDrawerPanel"><paper-header-panel drawer="" fixed=""><paper-toolbar id="drawerToolbar"></paper-toolbar><paper-menu id="drawerContent" class="list" attr-for-selected="data-route" selected="[[route]]"><a data-route="home" href="{{baseUrl}}"><iron-icon icon="home"></iron-icon><span>Home</span></a> <a data-route="menu" href="{{baseUrl}}menu"><iron-icon icon="icons:menu"></iron-icon><span>Menu</span></a> <a data-route="gallery" href="{{baseUrl}}gallery"><iron-icon icon="store"></iron-icon><span>Gallery</span></a> <a data-route="hours" href="{{baseUrl}}hours"><iron-icon icon="icons:schedule"></iron-icon><span>Hours</span></a><a data-route="contact" href="{{baseUrl}}contact"><iron-icon icon="mail"></iron-icon><span>Contact Us</span></a></paper-menu></paper-header-panel><paper-scroll-header-panel main="" id="headerPanelMain" condenses="" keep-condensed-header=""><paper-toolbar id="mainToolbar" class="tall"><paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle=""></paper-icon-button><span class="flex"></span><div class="middle middle-container center horizontal layout"></div><div class="bottom bottom-container center horizontal layout"></div></paper-toolbar><div class="content"><iron-pages attr-for-selected="data-route" selected="{{route}}"><section data-route="home"><paper-material elevation="0"><my-greeting></my-greeting></paper-material></section><section data-route="menu"><paper-material elevation="1"><my-list></my-list></paper-material></section><section data-route="gallery"><paper-material elevation="1"><my-gallery></my-gallery></paper-material></section><section data-route="hours"><paper-material elevation="1"><my-hours></my-hours></paper-material></section><section data-route="location"><paper-material elevation="1" class="location"><my-location></my-location></paper-material></section><section data-route="contact"><paper-material elevation="1"><my-contact></my-contact></paper-material></section></iron-pages></div></paper-scroll-header-panel></paper-drawer-panel><paper-toast id="toast"><span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span></paper-toast><paper-toast id="caching-complete" duration="6000" text="Caching complete! This app will work offline."></paper-toast><google-analytics code="UA-71804769-1"></google-analytics></template><script src="scripts/app.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- Title here -->
+    <title>Opera Dining</title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Italian Modern Australian Restaurant">
+    <meta name="keywords" content="Italian,Australian">
+    <meta name="author" content="KoushikNagarajan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link href="css/settings.css" rel="stylesheet">
+    <!-- FlexSlider Css -->
+    <link rel="stylesheet" href="css/flexslider.css" media="screen" />
+    <!-- Portfolio CSS -->
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <!-- Font awesome CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Less -->
+    <link href="css/less-style.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/mystyle.css" rel="stylesheet">
+    <!--[if IE]><link rel="stylesheet" href="css/ie-style.css"><![endif]-->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <!-- Model End -->
+    <!-- Page Wrapper -->
+    <div class="wrapper">
+        <!-- Header Start -->
+        <div class="header">
+            <div class="container">
+                <!-- Header top area content -->
+                <div class="header-top">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4">
+                            <!-- Header top left content contact -->
+                            <div class="header-contact">
+                                <!-- Contact number -->
+                                <span><i class="fa fa-phone red"></i> 02 9437 3742</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <!-- Header top right content search box -->
+                            <div class="social">
+                                <a href="https://www.facebook.com/operadining" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://plus.google.com/+OperaDiningCrowsNest" target="_blank" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                <a href="https://twitter.com/operadining" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="externalbuttons" style="text-align:center;margin:3px;">
+                                <a href="http://www.opera-dining.com.au/opera-dining" class="btn btn-danger btn-sm">ORDER ONLINE</a>
+                                <a onclick="window.open(this.href, 'PrenotazionetavolisuQuandoo', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no,width=312,height=342'); return false;" href="https://widget.quandoo.com.au/widget/reservation/merchant/XJdrE?aid=2&countryId=AUS" class="btn btn-danger btn-sm">BOOK A TABLE</a>
+                                <!-- Button Kart -->
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-5">
+                        <!-- Link -->
+                        <a href="index.html">
+                            <!-- Logo area -->
+                            <div class="logo">
+                                <img class="img-responsive" src="img/logo.png" alt="Opera Dining" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-8 col-sm-7">
+                        <!-- Navigation -->
+                        <nav class="navbar navbar-default navbar-right" role="navigation">
+                            <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li>
+                                            <a href="index.html">Home</a>
+                                        </li>
+                                        <li class="dropdown hidden-xs">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
+                                            <ul class="dropdown-menu dropdown-md">
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <!-- Menu Item -->
+                                                            <div class="menu-item">
+                                                                <!-- Heading -->
+                                                                <h3>Lunch Menu</h3>
+                                                                <a href="assets/LunchMenu.pdf" target="_blank" class="btn btn-danger btn-xs">Download Lunch Menu</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <!-- Menu Item -->
+                                                            <div class="menu-item">
+                                                                <!-- Heading -->
+                                                                <h3>Dinner Menu</h3>
+                                                                <a href="assets/DinnerMenu.pdf" target="_blank" class="btn btn-danger btn-xs">Download Dinner Menu</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown visible-xs">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="assets/LunchMenu.pdf">Lunch</a></li>
+                                                <li><a href="assets/DinnerMenu.pdf">Dinner</a></li>                                              
+                                            </ul>
+                                        </li>
+                                       
+                                        <!--      <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="img/nav-menu/nav5.jpg" class="img-responsive" alt="" /> Pages <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="error.html">404 Error</a></li>
+                                                <li><a href="0-base.html">Blank Page</a></li>
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="blog-single.html">Blog Single</a></li>
+                                                <li><a href="components.html">Components</a></li>
+                                                <li><a href="general.html">General</a></li>
+                                                <li><a href="nutrition-info.html">Nutrition Info</a></li>
+                                                <li><a href="recipe.html">Recipes</a></li>
+                                            </ul>
+                                        </li> -->
+                                        <li>
+                                            <a href="#contact">Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                            </div>
+                            <!-- /.container-fluid -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- / .container -->
+        </div>
+        <!-- Header End -->
+        <!-- Slider Start 
+            #################################
+                - THEMEPUNCH BANNER -
+            #################################   -->
+        <div class="tp-banner-container">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="img/slider/slide2.jpg" alt="" data-bgfit="cover" data-bgposition="center bottom" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption lfl largeblackbg br-red" data-x="20" data-y="100" data-speed="1500" data-start="1200" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 3">Incredibly Delicious Food...
+                        </div>
+                        <!-- LAYER NR. 2.0 -->
+                        <div class="tp-caption lfl medium_bg_darkblue br-green" data-x="20" data-y="200" data-speed="1500" data-start="1800" data-easing="Power4.easeOut" data-endspeed="300" data-endeasing="Power4.easeIn" data-captionhidden="off">Best Family Restaurant
+                        </div>
+                        <!-- LAYER NR. 2.1 -->
+                        <div class="tp-caption lfl medium_bg_darkblue br-lblue" data-x="20" data-y="250" data-speed="1500" data-start="2100" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 3">Lots of Love and Passion
+                        </div>
+                        <!-- LAYER NR. 2.2 -->
+                        <div class="tp-caption lfl medium_bg_darkblue br-purple" data-x="20" data-y="300" data-speed="1500" data-start="2400" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 3">Fresh. Fast. Tasty
+                        </div>
+                        <!-- LAYER NR. 2.3 -->
+                        <div class="tp-caption lfl medium_bg_darkblue br-orange" data-x="20" data-y="350" data-speed="1500" data-start="2700" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn" style="z-index: 3">Pizza! Pizza!
+                        </div>
+                        <!-- LAYER NR. 3.0 -->
+                        <div class="tp-caption customin customout" data-x="right" data-hoffset="-50" data-y="100" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="400" data-start="3600" data-easing="Power3.easeInOut" data-endspeed="300" style="z-index: 5"><img class="slide-img img-responsive" src="img/slider/s21.png" alt="" />
+                        </div>
+                        <!-- LAYER NR. 3.1 -->
+                        <div class="tp-caption customin customout" data-x="right" data-hoffset="-120" data-y="130" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="400" data-start="3900" data-easing="Power3.easeInOut" data-endspeed="300" style="z-index: 6"><img class="slide-img img-responsive" src="img/slider/s22.png" alt="" />
+                        </div>
+                        <!-- LAYER NR. 3.2 -->
+                        <div class="tp-caption customin customout" data-x="right" data-hoffset="-10" data-y="160" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="400" data-start="4200" data-easing="Power3.easeInOut" data-endspeed="300" style="z-index: 7"><img class="slide-img img-responsive" src="img/slider/s23.png" alt="" />
+                        </div>
+                        <!-- LAYER NR. 3.3 -->
+                        <div class="tp-caption customin customout" data-x="right" data-hoffset="-80" data-y="190" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="400" data-start="4500" data-easing="Power3.easeInOut" data-endspeed="300" style="z-index: 8"><img class="slide-img img-responsive" src="img/slider/s24.png" alt="" />
+                        </div>
+                    </li>
+                </ul>
+                <!-- Banner Timer -->
+                <div class="tp-bannertimer"></div>
+            </div>
+        </div>
+        <!-- Slider End -->
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- menu Start -->
+            <div class="menu padd">
+                <div class="container">
+                    <!-- Default Heading -->
+                    <div class="default-heading">
+                        <!-- Crown image -->
+                        <img class="img-responsive" src="img/crown.png" alt="" />
+                        <!-- Heading -->
+                        <h2>Welcome</h2>
+                        <!-- Paragraph -->
+                        <p>***********</p>
+                        <!-- Border -->
+                        <div class="border"></div>
+                    </div>
+                    <!-- Menu content container -->
+                    <div class="menu-container">
+                        <d 
+                            <div class="col-md-6 col-sm-6">
+                                <!-- Menu header -->
+                                <div class="menu-details br-green open-hours">
+                                    <!-- Menu list -->
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <div class="menu-list-item hours-list-item" ">
+                                                <!-- Icon -->
+                                               <a href="# ">Opening Hours</a>
+                                           
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item hours-list-item "">
+                                                <!-- Icon -->
+                                                <a href="#">Monday 5:00 - 10:00</a>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item hours-list-item" ">
+                                                <!-- Icon -->
+                                                <a href="# ">Tuesday 11:00 - 2:00 & 5:00 - 10:00</a>
+                                                
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item hours-list-item ">
+                                                <!-- Icon -->
+                                              <a href="# ">Wed 11:00 - 2:00 & 5:00 - 10:00</a>
+                                              
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item hours-list-item "">
+                                                <!-- Icon -->
+                                                <a href="#">Thu 11:00 - 2:00 & 5:00 - 10:00</a>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item hours-list-item" ">
+                                                <!-- Icon -->
+                                                <a href="# ">Fri 11:00 - 2:00 & 5:00 - 10:00</a>
+                                              
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item hours-list-item "">
+                                                <!-- Icon -->
+                                                <a href="#">Sat 11:00 - 2:00 & 5:00 - 10:00</a>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item hours-list-item" ">
+                                                <!-- Icon -->
+                                                <a href="# ">Sun 5:00 - 10:00</a>
+                                              
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- / Menu details end -->
+                            </div>
+                                 <div class="col-md-6 col-sm-6 ">
+                                <!-- Menu header -->
+                                <iframe src="https://widget.quandoo.com.au/widget/reservation/merchant/XJdrE?aid=2&countryId=AUS " height="372" width="100%" seamless="seamless " scrolling="no " frameborder="0 "></iframe>
+                                <!-- / Menu details end -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Menu container end -->
+                </div>
+            </div>
+            <!-- Menu End -->
+            <!-- menu Start -->
+            <div class="menu padd ">
+                <div class="container ">
+                    <!-- Default Heading -->
+                    <div class="default-heading ">
+                        <!-- Crown image -->
+                        <img class="img-responsive " src="img/crown.png " alt=" " />
+                        <!-- Heading -->
+                        <h2>Menu Highlights</h2>
+                        <!-- Paragraph -->
+                        <p>******</p>
+                        <!-- Border -->
+                        <div class="border "></div>
+                    </div>
+                    <!-- Menu content container -->
+                    <div class="menu-container ">
+                        <div class="row ">
+                            <div class="col-md-4 col-sm-4 ">
+                                <!-- Menu header -->
+                                <div class="menu-head ">
+                                    <!-- Image for menu item -->
+                                    <img class="menu-img img-responsive img-thumbnail " src="img/menu/menu1.jpg " alt=" " />
+                                    <!-- Menu title / Heading -->
+                                    <h3>Mains</h3>
+                                    <!-- Border for above heading -->
+                                    <div class="title-border br-red "></div>
+                                </div>
+                                <!-- Menu item details -->
+                                <div class="menu-details br-red ">
+                                    <!-- Menu list -->
+                                    <ul class="list-unstyled ">
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Spagatti Marinara</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$22</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Prawn Ravioli</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$26</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Linguine with Fried Zucchini</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$21</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Angel Hair Pasta</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$26</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Chicken & Mush.. Rissotto</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$22</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- / Menu details end -->
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <!-- Menu header -->
+                                <div class="menu-head ">
+                                    <!-- Image for menu item -->
+                                    <img class="menu-img img-responsive img-thumbnail " src="img/menu/menu2.jpg " alt=" " />
+                                    <!-- Menu title / Heading -->
+                                    <h3>Entree</h3>
+                                    <!-- Border for above heading -->
+                                    <div class="title-border br-green "></div>
+                                </div>
+                                <!-- Menu item details -->
+                                <div class="menu-details br-green ">
+                                    <!-- Menu list -->
+                                    <ul class="list-unstyled ">
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Natural Kilpatrick*</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$15</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Mornay/a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$16</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Beef Carpaccio</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$16</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Sizzling Garlic Prawn</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$15</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Antipasto Plate*</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$16</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- / Menu details end -->
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <!-- Menu header -->
+                                <div class="menu-head ">
+                                    <!-- Image for menu item -->
+                                    <img class="menu-img img-responsive img-thumbnail " src="img/menu/menu3.jpg " alt=" " />
+                                    <!-- Menu title / Heading -->
+                                    <h3>Meat</h3>
+                                    <!-- Border for above heading -->
+                                    <div class="title-border br-lblue "></div>
+                                </div>
+                                <!-- Menu item details -->
+                                <div class="menu-details br-lblue ">
+                                    <!-- Menu list -->
+                                    <ul class="list-unstyled ">
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Slow Braised Lamb Shoulder</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$27</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Fillet Mignon</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$32</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Chicken Involtini*</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$26</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Lamb Rump</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$27</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Aged Beef Rib Eye</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$29</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- / Menu details end -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Menu container end -->
+                </div>
+            </div>
+            <!-- Menu End -->
+             <!-- menu Start -->
+            <div class="menu padd ">
+                <div class="container ">
+
+                    <!-- Menu content container -->
+                    <div class="menu-container ">
+                        <div class="row ">
+                            <div class="col-md-4 col-sm-4 ">
+                                <!-- Menu header -->
+                                <div class="menu-head ">
+                                    <!-- Image for menu item -->
+                                    <img class="menu-img img-responsive img-thumbnail " src="img/menu/menu1.jpg " alt=" " />
+                                    <!-- Menu title / Heading -->
+                                    <h3>Seafood </h3>
+                                    <!-- Border for above heading -->
+                                    <div class="title-border br-red "></div>
+                                </div>
+                                <!-- Menu item details -->
+                                <div class="menu-details br-red ">
+                                    <!-- Menu list -->
+                                    <ul class="list-unstyled ">
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Fisherman Plate</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$35</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Salmon Steak</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$27</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Tuna Steak</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$30</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Grilled Scampi</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$35</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Seafood Brodetto</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$27</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- / Menu details end -->
+                            </div>
+                            <div class="col-md-4 col-sm-4 ">
+                                <!-- Menu header -->
+                                <div class="menu-head ">
+                                    <!-- Image for menu item -->
+                                    <img class="menu-img img-responsive img-thumbnail " src="img/menu/menu2.jpg " alt=" " />
+                                    <!-- Menu title / Heading -->
+                                    <h3>Dessert</h3>
+                                    <!-- Border for above heading -->
+                                    <div class="title-border br-green "></div>
+                                </div>
+                                <!-- Menu item details -->
+                                <div class="menu-details br-green ">
+                                    <!-- Menu list -->
+                                    <ul class="list-unstyled ">
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Chocolate Avalanche</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$8</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Sticky Date Pudding</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$8</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Tiramisu</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$8</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Mango Creme Brulee</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$8</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="menu-list-item ">
+                                                <!-- Icon -->
+                                                <i class="fa fa-angle-right "></i> <a href="# ">Riccotta - Almond Pudding</a>
+                                                <!-- Price badge -->
+                                                <span class="pull-right ">$8</span>
+                                                <div class="clearfix "></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- / Menu details end -->
+                            </div>
+                            <div class="col-md-4 col-sm-4 "> <!--TBD-->
+                                <!-- Menu header -->
+                                           <!-- Pricing list Item -->
+                           <div class="bowie "></div>
+                               <div class="externalbuttons " style="text-align:center;margin:3px; ">
+                                <a href="http://www.opera-dining.com.au/opera-dining " class="btn btn-danger btn-sm ">ORDER ONLINE</a>
+                                <a onclick="window.open(this.href, 'PrenotazionetavolisuQuandoo', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no,width=312,height=342'); return false; " href="https://widget.quandoo.com.au/widget/reservation/merchant/XJdrE?aid=2&countryId=AUS " class="btn btn-danger btn-sm ">BOOK A TABLE</a>
+                                <!-- Button Kart -->
+                                <div class="clearfix "></div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Menu container end -->
+                </div>
+            </div>
+            <!-- Menu End -->
+            <!-- Pricing Start -->
+   
+            <!-- Pricing End -->
+            <!-- Testimonial Start -->
+            <div class="testimonial padd ">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col-md-12 ">
+                            <!-- BLock heading -->
+                            <h3>Our Customer Says</h3>
+                            <!-- Flex slider Content -->
+                            <div class="flexslider-testimonial flexslider ">
+                                <ul class="slides ">
+                                    <li>
+                                        <!-- Testimonial Content -->
+                                        <div class="testimonial-item ">
+                                            <!-- Quote -->
+                                            <!--<span class="quote lblue ">&#8220;</span>-->
+                                            <!-- Your comments -->
+                                           <img  src="img/reviews/review0.png " alt=" " />
+                                            <!-- Heading with image -->
+                                             <div class="clearfix "></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <!-- Testimonial Content -->
+                                        <div class="testimonial-item ">
+                                            <!-- Quote -->
+                                            <!--<span class="quote lblue ">&#8220;</span>-->
+                                            <!-- Your comments -->
+                                           <img  src="img/reviews/review1.png " alt=" " />
+                                            <!-- Heading with image -->
+                                             <div class="clearfix "></div>
+                                        </div>
+                                    </li>
+                                   <li>
+                                        <!-- Testimonial Content -->
+                                        <div class="testimonial-item ">
+                                            <!-- Quote -->
+                                            <!--<span class="quote lblue ">&#8220;</span>-->
+                                            <!-- Your comments -->
+                                           <img  src="img/reviews/review2.png " alt=" " />
+                                            <!-- Heading with image -->
+                                             <div class="clearfix "></div>
+                                        </div>
+                                    </li>
+                                     <li>
+                                        <!-- Testimonial Content -->
+                                        <div class="testimonial-item ">
+                                            <!-- Quote -->
+                                            <!--<span class="quote lblue ">&#8220;</span>-->
+                                            <!-- Your comments -->
+                                           <img  src="img/reviews/review3.png " alt=" " />
+                                            <!-- Heading with image -->
+                                             <div class="clearfix "></div>
+                                        </div>
+                                    </li>
+                                     <li>
+                                        <!-- Testimonial Content -->
+                                        <div class="testimonial-item ">
+                                            <!-- Quote -->
+                                            <!--<span class="quote lblue ">&#8220;</span>-->
+                                            <!-- Your comments -->
+                                           <img  src="img/reviews/review4.png " alt=" " />
+                                            <!-- Heading with image -->
+                                             <div class="clearfix "></div>
+                                        </div>
+                                    </li>
+                                     <li>
+                                        <!-- Testimonial Content -->
+                                        <div class="testimonial-item ">
+                                            <!-- Quote -->
+                                            <!--<span class="quote lblue ">&#8220;</span>-->
+                                            <!-- Your comments -->
+                                           <img  src="img/reviews/review5.png " alt=" " />
+                                            <!-- Heading with image -->
+                                             <div class="clearfix "></div>
+                                        </div>
+                                    </li>
+                                      <li>
+                                        <!-- Testimonial Content -->
+                                        <div class="testimonial-item ">
+                                            <!-- Quote -->
+                                            <!--<span class="quote lblue ">&#8220;</span>-->
+                                            <!-- Your comments -->
+                                           <img  src="img/reviews/review6.png " alt=" " />
+                                            <!-- Heading with image -->
+                                             <div class="clearfix "></div>
+                                        </div>
+                                    </li>
+                                      <li>
+                                        <!-- Testimonial Content -->
+                                        <div class="testimonial-item ">
+                                            <!-- Quote -->
+                                            <!--<span class="quote lblue ">&#8220;</span>-->
+                                            <!-- Your comments -->
+                                           <img  src="img/reviews/review7.png " alt=" " />
+                                            <!-- Heading with image -->
+                                             <div class="clearfix "></div>
+                                        </div>
+                                    </li>
+                                      <li>
+                                        <!-- Testimonial Content -->
+                                        <div class="testimonial-item ">
+                                            <!-- Quote -->
+                                            <!--<span class="quote lblue ">&#8220;</span>-->
+                                            <!-- Your comments -->
+                                           <img  src="img/reviews/review8.png " alt=" " />
+                                            <!-- Heading with image -->
+                                             <div class="clearfix "></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial End -->
+        </div>
+        <!-- / Main Content End -->
+        <!-- Footer Start -->
+        <div class="footer padd ">
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-md-6 col-sm-6 ">
+                        <!-- Footer widget -->
+                        <div class="footer-widget ">
+                            <!-- Logo area -->
+                       <div id="map"></div>
+    <script>
+
+      function initMap() {
+
+        var myLatLng = {lat: -33.8268171, lng: 151.19967703};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Opera Dining!'
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap "
+        async defer></script>
+                        <!--/ Footer widget end -->
+                    </div>
+                    </div>
+                    <div class="clearfix visible-sm "></div>
+                    <div class="col-md-6 col-sm-6 ">
+                        <!-- Footer widget -->
+                        <div class="footer-widget ">
+                            <!-- Heading -->
+                            <h4>Contact Us</h4>
+                            <div class="contact-details ">
+                                <!-- Address / Icon -->
+                                <i class="fa fa-map-marker br-red "></i> <span>#344, Pacific Highway <br />Crows Nest<br /> NSW - 2065</span>
+                                <div class="clearfix "></div>
+                                <!-- Contact Number / Icon -->
+                                <i class="fa fa-phone br-green "></i> <span>+02 9437 3742</span>
+                                <div class="clearfix "></div>
+                                <!-- Email / Icon -->
+                                <i class="fa fa-envelope-o br-lblue "></i> <span><a href="# ">info@operadining.com</a></span>
+                                <div class="clearfix "></div>
+                            </div>
+                            <!-- Social media icon -->
+
+                            <div class="social ">
+                                <a href="https://www.facebook.com/operadining " target="_blank " class="facebook "><i class="fa fa-facebook "></i></a>
+                                <a href="https://plus.google.com/+OperaDiningCrowsNest " target="_blank " class="google-plus "><i class="fa fa-google-plus "></i></a>
+                                <a href="https://twitter.com/operadining " target="_blank " class="twitter "><i class="fa fa-twitter "></i></a>
+                            </div>
+                        </div>
+                        <!--/ Footer widget end -->
+                    </div>
+                </div>
+                <!-- Copyright -->
+                <div class="footer-copyright ">
+                    <!-- Paragraph -->
+                    <p>&copy; Copyright 2016 <a href="# ">Opera Dining</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+    </div>
+    <!-- / Wrapper End -->
+    <!-- Scroll to top -->
+    <span class="totop "><a href="# "><i class="fa fa-angle-up "></i></a></span>
+    <!-- Javascript files -->
+    <!-- jQuery -->
+    <script src="js/jquery.js "></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js "></script>
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript " src="js/jquery.themepunch.tools.min.js "></script>
+    <script type="text/javascript " src="js/jquery.themepunch.revolution.min.js "></script>
+    <!-- FLEX SLIDER SCRIPTS  -->
+    <script defer src="js/jquery.flexslider-min.js "></script>
+    <!-- Pretty Photo JS -->
+    <script src="js/jquery.prettyPhoto.js "></script>
+    <!-- Respond JS for IE8 -->
+    <script src="js/respond.min.js "></script>
+    <!-- HTML5 Support for IE -->
+    <script src="js/html5shiv.js "></script>
+    <!-- Custom JS -->
+    <script src="js/custom.js "></script>
+    <!-- JS code for this page -->
+    <script>
+    /* ******************************************** */
+    /*  JS for SLIDER REVOLUTION  */
+    /* ******************************************** */
+    jQuery(document).ready(function() {
+        jQuery('.tp-banner').revolution({
+            delay: 9000,
+            startheight: 500,
+
+            hideThumbs: 10,
+
+            navigationType: "bullet ",
+
+            hideArrowsOnMobile: "on ",
+
+            touchenabled: "on ",
+            onHoverStop: "on ",
+
+            navOffsetHorizontal: 0,
+            navOffsetVertical: 20,
+
+            stopAtSlide: -1,
+            stopAfterLoops: -1,
+
+            shadow: 0,
+
+            fullWidth: "on ",
+            fullScreen: "off "
+        });
+    });
+    /* ******************************************** */
+    /*  JS for FlexSlider  */
+    /* ******************************************** */
+
+    $(window).load(function() {
+        $('.flexslider-recent').flexslider({
+            animation: "fade ",
+            animationSpeed: 1000,
+            controlNav: true,
+            directionNav: false
+        });
+        $('.flexslider-testimonial').flexslider({
+            animation: "fade ",
+            slideshowSpeed: 5000,
+            animationSpeed: 1000,
+            controlNav: true,
+            directionNav: false
+        });
+    });
+
+    /* Gallery */
+
+    jQuery(".gallery-img-link ").prettyPhoto({
+        overlay_gallery: false,
+        social_tools: false
+    });
+    </script>
+</body>
+
+</html>

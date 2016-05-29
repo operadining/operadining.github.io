@@ -1,0 +1,25 @@
+.bowie {
+  position: relative;
+  backface-visibility: hidden;
+  border-top: 52px solid #F23712;
+  border-right: 16px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 25px solid #F23712;
+  transform: skewX(-18deg) translate3d(0, 0, 0);
+}
+.bowie:before {
+  content: '';
+  display: block;
+  position: absolute;
+  backface-visibility: hidden;
+  left: -8px;
+  top: -12px;
+  border-left: 28px solid #F23712;
+  border-bottom: 60px solid transparent;
+  transform: skewY(-16deg) rotate(6deg) translate3d(0, 0, 0);
+}
+
+#map {
+        width: 500px;
+        height: 400px;
+      }
